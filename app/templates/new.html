@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} New Task {% endblock title %}
+
+{% block content %}
+<h1>
+    New Task
+</h1>
+<form method="post" action="{{ url_for('create_task') }}">
+    <p>
+        <label for="summary">Summary</label>
+        <input type="text" placeholder="Task summary" name="summary" id="id_summary">
+    </p>
+    <p>
+        <label for="description">Description</label>
+        <textarea name="description" id="id_description" cols="5" rows="5"></textarea>
+    </p>
+    <input type="submit" class="btn btn-success" value="submit">
+</form>
+{% endblock content %}
