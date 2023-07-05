@@ -2,13 +2,16 @@
 
 {% block content %}
     <h1>My tasks</h1>
-    <ul>
+    <ul class="list-group">
         {% for task in tasks %}
-            <li>
-                <a href="{{url_for('display_task', task_id=task['id'])}}">
+        <li class="list-group-item">
+            <a href="{{url_for('display_task', task_id=task['id'])}}">
                 {{ task["summary"] }}
-                </a>
-            </li>
+            </a>
+            <a class="delete" href="{{url_for('delete_task', task_id=task['id'])}}">
+                Delete
+            </a>
+        </li>
         {% endfor %}
     </ul>
 {% endblock %}

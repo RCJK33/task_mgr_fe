@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 import requests
 from datetime import datetime
+import time
 
 app = Flask(__name__)
 
@@ -51,4 +52,11 @@ def create_task():
     response = requests.post(BASE_URL, json=task_json)
     if response.status_code == 201:
         return render_template('success.html', task=response.json().get('task'), message='New task created!')
+    return render_template('error.html', err=response.status_code), response.status_code
+
+@app.get('/tasks/<int:task_id>/delete')
+def delete_task(task_id):
+    response = requests.delete(f"{BASE_URL}/{task_id}")
+    if response.status_code == 204:
+        return redirect(url_for('display_all_tasks'))
     return render_template('error.html', err=response.status_code), response.status_code

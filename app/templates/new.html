@@ -7,14 +7,15 @@
     New Task
 </h1>
 <form method="post" action="{{ url_for('create_task') }}">
-    <p>
-        <label for="summary">Summary</label>
-        <input type="text" placeholder="Task summary" name="summary" id="id_summary">
-    </p>
-    <p>
-        <label for="description">Description</label>
-        <textarea name="description" id="id_description" cols="5" rows="5"></textarea>
-    </p>
+    <div class="mb-3">
+        <label class="form-label" for="summary">Summary</label>
+        <input class="form-control" type="text" placeholder="Task summary" name="summary" id="id_summary">
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea class="form-control" name="description" id="id_description" cols="5" rows="5"></textarea>
+    </div>
     <input type="submit" class="btn btn-success" value="submit">
 </form>
 {% endblock content %}
